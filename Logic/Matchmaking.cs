@@ -1,4 +1,4 @@
-﻿using MatchmakingService.Hubs;
+﻿using LetsChess_MatchmakingService.Hubs;
 
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService.Logic
+namespace LetsChess_MatchmakingService.Logic
 {
 	public class Matchmaking
 	{

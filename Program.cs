@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService
+namespace LetsChess_MatchmakingService
 {
 	public class Program
 	{
@@ -37,14 +37,13 @@ namespace MatchmakingService
 			Host.CreateDefaultBuilder(args)
 			.ConfigureAppConfiguration((hostingContext, config) =>
 			{
-				config.AddEnvironmentVariables("LETSCHESS_");
 				var env = hostingContext.HostingEnvironment;
 				Console.WriteLine($"the environment is now: {env.EnvironmentName}");
 
 				//TODO: hij pakt deze niet goed in kubernetes?
-				config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-						.AddJsonFile($"appsettings.{env.EnvironmentName}.json",
-										optional: true, reloadOnChange: true);
+				config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+				.AddJsonFile($"appsettings.{env.EnvironmentName}.json",
+								optional: true, reloadOnChange: true);
 			})
 			.ConfigureWebHostDefaults(webBuilder =>
 			{

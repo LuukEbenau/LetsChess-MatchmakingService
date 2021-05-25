@@ -1,4 +1,4 @@
-﻿using MatchmakingService.Logic;
+﻿using LetsChess_MatchmakingService.Logic;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService.Controllers
+namespace LetsChess_MatchmakingService.Controllers
 {
 	[ApiController]
-	[Route("/api/matchmaking")]
+	[Route("/matchmaking")]
 	public class MatchmakingController : ControllerBase
 	{
 		private readonly ILogger<MatchmakingController> logger;

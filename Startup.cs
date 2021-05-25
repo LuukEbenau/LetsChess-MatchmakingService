@@ -1,5 +1,5 @@
-using MatchmakingService.Hubs;
-using MatchmakingService.Logic;
+using LetsChess_MatchmakingService.Hubs;
+using LetsChess_MatchmakingService.Logic;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService
+namespace LetsChess_MatchmakingService
 {
 	public class Startup
 	{
