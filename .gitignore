@@ -2,3 +2,7 @@
 .vs/
 
 LetsChess-GameService/
+
+bin/
+
+obj/
