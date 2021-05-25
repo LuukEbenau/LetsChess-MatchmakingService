@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService.Hubs
+namespace LetsChess_MatchmakingService.Hubs
 {
 	public interface IMatchmakingHub {
 		Task MatchFound(string matchId, string userId);

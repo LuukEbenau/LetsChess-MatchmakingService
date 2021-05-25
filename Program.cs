@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService
+namespace LetsChess_MatchmakingService
 {
 	public class Program
 	{

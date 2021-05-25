@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MatchmakingService.Logic
+namespace LetsChess_MatchmakingService.Logic
 {
 	public class MQConnector: IDisposable
 	{

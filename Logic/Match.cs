@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MatchmakingService.Logic
+namespace LetsChess_MatchmakingService.Logic
 {
 	public class Match
 	{ 
