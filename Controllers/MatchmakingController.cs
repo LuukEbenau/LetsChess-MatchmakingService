@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace MatchmakingService.Controllers
 {
 	[ApiController]
-	[Route("/api/matchmaking")]
+	[Route("/matchmaking")]
 	public class MatchmakingController : ControllerBase
 	{
 		private readonly ILogger<MatchmakingController> logger;
