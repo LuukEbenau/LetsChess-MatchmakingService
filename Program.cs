@@ -39,11 +39,12 @@ namespace LetsChess_MatchmakingService
 			{
 				var env = hostingContext.HostingEnvironment;
 				Console.WriteLine($"the environment is now: {env.EnvironmentName}");
-
+				
 				//TODO: hij pakt deze niet goed in kubernetes?
 				config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 				.AddJsonFile($"appsettings.{env.EnvironmentName}.json",
 								optional: true, reloadOnChange: true);
+				config.AddEnvironmentVariables("LETSCHESS_");
 			})
 			.ConfigureWebHostDefaults(webBuilder =>
 			{

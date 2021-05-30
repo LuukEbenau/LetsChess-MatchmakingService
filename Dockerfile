@@ -2,15 +2,15 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+expose 80
+expose 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["LetsChess-MatchmakingService/LetsChess-MatchmakingService.csproj", "LetsChess-MatchmakingService/"]
-RUN dotnet restore "LetsChess-MatchmakingService/LetsChess-MatchmakingService.csproj"
+COPY ["LetsChess-MatchmakingService.csproj", "."]
+RUN dotnet restore "./LetsChess-MatchmakingService.csproj"
 COPY . .
-WORKDIR "/src/LetsChess-MatchmakingService"
+WORKDIR "/src/."
 RUN dotnet build "LetsChess-MatchmakingService.csproj" -c Release -o /app/build
 
 FROM build AS publish

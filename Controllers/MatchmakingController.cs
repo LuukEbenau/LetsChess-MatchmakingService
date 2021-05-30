@@ -22,10 +22,14 @@ namespace LetsChess_MatchmakingService.Controllers
 			this.matchmaking = matchmaking;		
 		}
 
+		[HttpGet("appel")]
+		public IActionResult Appel() {
+			return Ok("appelsap");
+		}
 		[HttpPost("findmatch")]
 		public IActionResult FindMatch(string userId)
 		{
-			if (userId == null) return BadRequest($"the field userId was not supplied");
+			if (userId == "null" || string.IsNullOrEmpty(userId)) return BadRequest($"the field userId was not supplied");
 			logger.LogDebug("Findmatch endpoint called for userId",userId);
 			matchmaking.AddPlayer(new Player(userId));
 			return Ok($"player with id {userId} added");

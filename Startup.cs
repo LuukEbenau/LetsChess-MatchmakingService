@@ -1,4 +1,3 @@
-using LetsChess_MatchmakingService.Hubs;
 using LetsChess_MatchmakingService.Logic;
 
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +37,7 @@ namespace LetsChess_MatchmakingService
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "MatchmakingService", Version = "v1" });
 			});
+			services.Configure<Credentials>(Configuration.GetSection("MQCredentials"));
 			services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 			services.AddSingleton<MQConnector>();
 			services.AddSignalR();
@@ -56,13 +56,12 @@ namespace LetsChess_MatchmakingService
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MatchmakingService v1"));
 			}
 
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection();
 			app.UseRouting();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
-				endpoints.MapHub<MatchmakingHub>("/hub");
 			});
 		}
 	}
