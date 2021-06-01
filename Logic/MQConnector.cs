@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LetsChess.Models.Messages;
+
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Newtonsoft.Json;
@@ -22,7 +24,7 @@ namespace LetsChess_MatchmakingService.Logic
 		private IModel channel;
 		private readonly ILogger<MQConnector> logger;
 
-		public MQConnector(IOptions<ConnectionStrings> connectionStrings, ILogger<MQConnector> logger, IOptions<Credentials> mqCredentials) {
+		public MQConnector(IOptions<ConnectionStrings> connectionStrings, ILogger<MQConnector> logger, IOptions<MQCredentials> mqCredentials) {
 			this.logger = logger;
 
 			factory = new ConnectionFactory() { 
@@ -86,7 +88,7 @@ namespace LetsChess_MatchmakingService.Logic
 			channel.Dispose();
 		}
 
-		public void MatchFound(string matchId, string player) {
+		public void MatchFound(string matchId, string player, string opponent, bool playingWhite) {
 			var connected = connection != default || connection.IsOpen || channel.IsOpen;
 			if (!connected) { 
 				connected = Connect(); 
@@ -95,14 +97,11 @@ namespace LetsChess_MatchmakingService.Logic
 			{
 				logger.LogDebug($"publishing matchfound for match {matchId} of user {player}");
 				logger.LogDebug($"connection status: {connection.IsOpen}, {connection.Heartbeat}, channel open{channel.IsOpen}");
-				var body = JsonConvert.SerializeObject(new MatchFoundMessage { MatchId = matchId, UserId = player });
+				var body = JsonConvert.SerializeObject(new MatchFoundMessage { MatchId = matchId, UserId = player, Opponent=opponent, PlayingWhite = playingWhite });
 				channel.BasicPublish(exchange: "matchmaking", routingKey: "matchmaking", body: Encoding.UTF8.GetBytes(body));
 			}
 		}
 
-		protected class MatchFoundMessage { 
-			public string MatchId { get; set; }
-			public string UserId { get; set; }
-		}
+
 	}
 }

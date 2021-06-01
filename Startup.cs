@@ -37,7 +37,7 @@ namespace LetsChess_MatchmakingService
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "MatchmakingService", Version = "v1" });
 			});
-			services.Configure<Credentials>(Configuration.GetSection("MQCredentials"));
+			services.Configure<MQCredentials>(Configuration.GetSection("MQCredentials"));
 			services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 			services.AddSingleton<MQConnector>();
 			services.AddSignalR();

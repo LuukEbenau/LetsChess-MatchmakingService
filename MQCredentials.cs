@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LetsChess_MatchmakingService
 {
-	public class Credentials
+	public class MQCredentials
 	{
 		public string Username { get; set; }
 		public string Password { get; set; }

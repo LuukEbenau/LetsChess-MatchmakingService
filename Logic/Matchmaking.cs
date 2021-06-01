@@ -29,10 +29,11 @@ namespace LetsChess_MatchmakingService.Logic
 				Matches.Add(match);
 
 				logger.LogInformation($"found 2 players '{match.Player1.UserId}' and {match.Player2.UserId} waiting for match, creating match between them with id '{match.Id}'");
-				_mQConnector.MatchFound(match.Id, match.Player1.UserId);
-				_mQConnector.MatchFound(match.Id, match.Player2.UserId);
-				//matchmakingHub.Clients.All.MatchFound(match.Id, match.Player1.UserId);
-				//matchmakingHub.Clients.All.MatchFound(match.Id, match.Player2.UserId);
+
+				var colorSwitch = new Random().Next(1) == 0;
+
+				_mQConnector.MatchFound(match.Id, match.Player1.UserId, match.Player2.UserId, colorSwitch);
+				_mQConnector.MatchFound(match.Id, match.Player2.UserId, match.Player1.UserId, !colorSwitch);
 			}
 		}
 	}
