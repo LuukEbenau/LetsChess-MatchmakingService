@@ -1,4 +1,5 @@
-﻿using LetsChess.Models.Messages;
+﻿
+using LetsChess_MatchmakingService.Messages;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

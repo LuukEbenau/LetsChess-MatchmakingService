@@ -22,8 +22,4 @@
     <Folder Include="Hubs\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\shared\LetsChess.Models\LetsChess.Models.csproj" />
-  </ItemGroup>
-
 </Project>
