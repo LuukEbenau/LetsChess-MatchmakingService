@@ -90,7 +90,7 @@ namespace LetsChess_MatchmakingService.Logic
 		}
 
 		public void MatchFound(string matchId, string player, string opponent, bool playingWhite) {
-			var connected = connection != default || connection.IsOpen || channel.IsOpen;
+			var connected = connection != default && connection.IsOpen && channel.IsOpen;
 			if (!connected) { 
 				connected = Connect(); 
 			}
